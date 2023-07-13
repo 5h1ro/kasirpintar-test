@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  app:
+    container_name: kaspinXnicepay
+    build: .
+    ports:
+      - ${EXPOSE_PORT}:${PORT}
+    restart: on-failure
+    volumes:
+      - ./:/app/
+    env_file:
+      - .env

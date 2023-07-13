@@ -1,0 +1,383 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is kasir pintar with nicepay api.",
+    "title": "Kasir Pintar x Nicepay App",
+    "contact": {
+      "name": "Nurhakiki Romadhony Ikhwandany",
+      "url": "https://http://hqq.seovdetech.com//",
+      "email": "nurhakiki.ri@gmail.com"
+    },
+    "version": "1.0"
+  },
+  "basePath": "/",
+  "paths": {
+    "/payment": {
+      "post": {
+        "description": "Send Payment to NICEPAY",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["Post Payment"],
+        "summary": "Payment",
+        "operationId": "post-payment",
+        "parameters": [
+          {
+            "description": "Required data",
+            "name": "params",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/request.PaymentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "description": "Transaction Regist to NICEPAY",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["Post Register"],
+        "summary": "Register",
+        "operationId": "post-register",
+        "parameters": [
+          {
+            "description": "Required data",
+            "name": "params",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/request.RegisterRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/status": {
+      "post": {
+        "description": "Check Status to NICEPAY",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "tags": ["Post Status"],
+        "summary": "Status",
+        "operationId": "post-status",
+        "parameters": [
+          {
+            "description": "Required data",
+            "name": "params",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/request.StatusRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "request.PaymentRequest": {
+      "type": "object",
+      "required": [
+        "amt",
+        "cardCvv",
+        "cardExpYymm",
+        "cardHolderNm",
+        "cardNo",
+        "referenceNo",
+        "tXid"
+      ],
+      "properties": {
+        "amt": {
+          "type": "string",
+          "example": "1000"
+        },
+        "callBackUrl": {
+          "type": "string"
+        },
+        "cardCvv": {
+          "type": "string",
+          "example": "123"
+        },
+        "cardExpYymm": {
+          "type": "string",
+          "example": "2512"
+        },
+        "cardHolderNm": {
+          "type": "string",
+          "example": "JOHN DOE"
+        },
+        "cardNo": {
+          "type": "string",
+          "example": "4111111111111111"
+        },
+        "clickPayNo": {
+          "type": "string"
+        },
+        "clickPayToken": {
+          "type": "string"
+        },
+        "dataField3": {
+          "type": "string"
+        },
+        "merchantToken": {
+          "type": "string"
+        },
+        "preauthToken": {
+          "type": "string"
+        },
+        "recurringToken": {
+          "type": "string"
+        },
+        "referenceNo": {
+          "type": "string",
+          "example": "TESTING20230713052918"
+        },
+        "tXid": {
+          "type": "string",
+          "example": "IONPAYTEST01202307131229186508"
+        },
+        "timeStamp": {
+          "type": "string"
+        }
+      }
+    },
+    "request.RegisterRequest": {
+      "type": "object",
+      "required": [
+        "amt",
+        "billingAddr",
+        "billingCity",
+        "billingCountry",
+        "billingEmail",
+        "billingNm",
+        "billingPhone",
+        "billingPostCd",
+        "billingState",
+        "cartData",
+        "currency",
+        "goodsNm",
+        "instmntMon",
+        "instmntType",
+        "payMethod",
+        "recurrOpt",
+        "userIP"
+      ],
+      "properties": {
+        "amt": {
+          "type": "string",
+          "example": "1000"
+        },
+        "bankCd": {
+          "type": "string"
+        },
+        "billingAddr": {
+          "type": "string",
+          "example": "Jln Merdeka 123"
+        },
+        "billingCity": {
+          "type": "string",
+          "example": "Jakara Selatan"
+        },
+        "billingCountry": {
+          "type": "string",
+          "example": "Indonesia"
+        },
+        "billingEmail": {
+          "type": "string",
+          "example": "buyer@merchant.com"
+        },
+        "billingNm": {
+          "type": "string",
+          "example": "John Doe"
+        },
+        "billingPhone": {
+          "type": "string",
+          "example": "2112345678"
+        },
+        "billingPostCd": {
+          "type": "string",
+          "example": "14350"
+        },
+        "billingState": {
+          "type": "string",
+          "example": "DKI Jakarta"
+        },
+        "cartData": {
+          "type": "string",
+          "example": "{}"
+        },
+        "currency": {
+          "type": "string",
+          "example": "IDR"
+        },
+        "dbProcessUrl": {
+          "type": "string"
+        },
+        "deliveryAddr": {
+          "type": "string",
+          "example": "Jln Merdeka 123"
+        },
+        "deliveryCity": {
+          "type": "string",
+          "example": "Jakara Selatan"
+        },
+        "deliveryCountry": {
+          "type": "string",
+          "example": "Indonesia"
+        },
+        "deliveryNm": {
+          "type": "string",
+          "example": "John Doe"
+        },
+        "deliveryPhone": {
+          "type": "string",
+          "example": "2112345678"
+        },
+        "deliveryPostCd": {
+          "type": "string",
+          "example": "14350"
+        },
+        "deliveryState": {
+          "type": "string",
+          "example": "DKI Jakarta"
+        },
+        "description": {
+          "type": "string"
+        },
+        "fee": {
+          "type": "string"
+        },
+        "goodsNm": {
+          "type": "string",
+          "example": "Merchant Goods 1"
+        },
+        "iMid": {
+          "type": "string"
+        },
+        "instmntMon": {
+          "type": "string",
+          "example": "1"
+        },
+        "instmntType": {
+          "type": "string",
+          "example": "1"
+        },
+        "merFixAcctId": {
+          "type": "string",
+          "example": "4"
+        },
+        "merchantToken": {
+          "type": "string"
+        },
+        "mitraCd": {
+          "type": "string"
+        },
+        "notaxAmt": {
+          "type": "string"
+        },
+        "payMethod": {
+          "type": "string",
+          "example": "01"
+        },
+        "recurrOpt": {
+          "type": "string",
+          "example": "2"
+        },
+        "referenceNo": {
+          "type": "string"
+        },
+        "reqClientVer": {
+          "type": "string"
+        },
+        "reqDomain": {
+          "type": "string"
+        },
+        "reqDt": {
+          "type": "string"
+        },
+        "reqServerIP": {
+          "type": "string"
+        },
+        "reqTm": {
+          "type": "string"
+        },
+        "timeStamp": {
+          "type": "string"
+        },
+        "userAgent": {
+          "type": "string"
+        },
+        "userIP": {
+          "type": "string",
+          "example": "127.0.0.1"
+        },
+        "userLanguage": {
+          "type": "string"
+        },
+        "userSessionID": {
+          "type": "string"
+        },
+        "vacctValidDt": {
+          "type": "string"
+        },
+        "vacctValidTm": {
+          "type": "string"
+        },
+        "vat": {
+          "type": "string"
+        }
+      }
+    },
+    "request.StatusRequest": {
+      "type": "object",
+      "required": ["amt", "referenceNo", "tXid"],
+      "properties": {
+        "amt": {
+          "type": "string",
+          "example": "1000"
+        },
+        "iMid": {
+          "type": "string"
+        },
+        "merchantToken": {
+          "type": "string"
+        },
+        "referenceNo": {
+          "type": "string",
+          "example": "TESTING20230713052918"
+        },
+        "tXid": {
+          "type": "string",
+          "example": "IONPAYTEST01202307131229186508"
+        },
+        "timeStamp": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  }
+}

@@ -1,0 +1,216 @@
+basePath: /
+definitions:
+  request.PaymentRequest:
+    properties:
+      amt:
+        example: "1000"
+        type: string
+      callBackUrl:
+        type: string
+      cardCvv:
+        example: "123"
+        type: string
+      cardExpYymm:
+        example: "2512"
+        type: string
+      cardHolderNm:
+        example: JOHN DOE
+        type: string
+      cardNo:
+        example: "4111111111111111"
+        type: string
+      clickPayNo:
+        type: string
+      clickPayToken:
+        type: string
+      dataField3:
+        type: string
+      merchantToken:
+        type: string
+      preauthToken:
+        type: string
+      recurringToken:
+        type: string
+      referenceNo:
+        example: TESTING20230713052918
+        type: string
+      tXid:
+        example: IONPAYTEST01202307131229186508
+        type: string
+      timeStamp:
+        type: string
+    required:
+      - amt
+      - cardCvv
+      - cardExpYymm
+      - cardHolderNm
+      - cardNo
+      - referenceNo
+      - tXid
+    type: object
+  request.RegisterRequest:
+    properties:
+      amt:
+        example: "1000"
+        type: string
+      billingAddr:
+        example: Jln Merdeka 123
+        type: string
+      billingCity:
+        example: Jakara Selatan
+        type: string
+      billingCountry:
+        example: Indonesia
+        type: string
+      billingEmail:
+        example: buyer@merchant.com
+        type: string
+      billingNm:
+        example: John Doe
+        type: string
+      billingPhone:
+        example: "2112345678"
+        type: string
+      billingPostCd:
+        example: "14350"
+        type: string
+      billingState:
+        example: DKI Jakarta
+        type: string
+      cartData:
+        example: "{}"
+        type: string
+      currency:
+        example: IDR
+        type: string
+      goodsNm:
+        example: Merchant Goods 1
+        type: string
+      instmntMon:
+        example: "1"
+        type: string
+      instmntType:
+        example: "1"
+        type: string
+      payMethod:
+        example: "01"
+        type: string
+      recurrOpt:
+        example: "2"
+        type: string
+      userIP:
+        example: "127.0.0.1"
+        type: string
+    required:
+      - amt
+      - billingAddr
+      - billingCity
+      - billingCountry
+      - billingEmail
+      - billingNm
+      - billingPhone
+      - billingPostCd
+      - billingState
+      - cartData
+      - currency
+      - goodsNm
+      - instmntMon
+      - instmntType
+      - payMethod
+      - recurrOpt
+      - userIP
+    type: object
+  request.StatusRequest:
+    properties:
+      amt:
+        example: "1000"
+        type: string
+      referenceNo:
+        example: TESTING20230713052918
+        type: string
+      tXid:
+        example: IONPAYTEST01202307131229186508
+        type: string
+    required:
+      - amt
+      - referenceNo
+      - tXid
+    type: object
+info:
+  contact:
+    email: nurhakiki.ri@gmail.com
+    name: Nurhakiki Romadhony Ikhwandany
+    url: https://http://hqq.seovdetech.com//
+  description: This is kasir pintar with nicepay api.
+  title: Kasir Pintar x Nicepay App
+  version: "1.0"
+paths:
+  /payment:
+    post:
+      consumes:
+        - application/json
+      description: Send Payment to NICEPAY
+      operationId: post-payment
+      parameters:
+        - description: Required data
+          in: body
+          name: params
+          required: true
+          schema:
+            $ref: "#/definitions/request.PaymentRequest"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Payment
+      tags:
+        - Post Payment
+  /register:
+    post:
+      consumes:
+        - application/json
+      description: Transaction Regist to NICEPAY
+      operationId: post-register
+      parameters:
+        - description: Required data
+          in: body
+          name: params
+          required: true
+          schema:
+            $ref: "#/definitions/request.RegisterRequest"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Register
+      tags:
+        - Post Register
+  /status:
+    post:
+      consumes:
+        - application/json
+      description: Check Status to NICEPAY
+      operationId: post-status
+      parameters:
+        - description: Required data
+          in: body
+          name: params
+          required: true
+          schema:
+            $ref: "#/definitions/request.StatusRequest"
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Status
+      tags:
+        - Post Status
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
